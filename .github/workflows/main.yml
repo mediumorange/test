@@ -20,7 +20,6 @@ jobs:
       
       - name: Generate env
         run:
-          cd ./src/main/resources
           echo "APPLICAION_DB_URL=$APPLICAION_DB_URL" >> env.properties
           echo "APPLICAION_DB_USERNAME=$APPLICAION_DB_USERNAME" >> env.properties
           echo "APPLICAION_DB_PASSWORD=$APPLICAION_DB_PASSWORD" >> env.properties
