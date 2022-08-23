@@ -17,14 +17,18 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-
-      - name: application file
+      
+      - name: Generate env
         run:
-          cd ./src/main/resource
-          touch ./application-dev.properties
-          echo "${{ secrets.APPLICATION_DEV }}" > ./application-dev.properties
-        shell: bash
-
+          cd ./src/main/resources
+          echo "application.db.url=$APPLICAION_DB_URL" >> env.properties
+          echo "application.db.username=$APPLICAION_DB_USERNAME" >> env.properties
+          echo "application.db.password=$APPLICAION_DB_PASSWORD" >> env.properties
+        env:
+          APPLICAION_DB_URL: ${{ secrets.APPLICATION_DB_URL }}
+          APPLICATION_DB_USERNAME: ${{ secrets.APPLICATION_DB_USERNAME }}
+          APPLICATION_DB_PASSWORD: ${{ secrets.APPLICATION_DB_PASSWORD }}
+      
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
