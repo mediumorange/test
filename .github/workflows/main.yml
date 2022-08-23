@@ -21,9 +21,9 @@ jobs:
       - name: Generate env
         run:
           cd ./src/main/resources
-          echo "application.db.url=$APPLICAION_DB_URL" >> env.properties
-          echo "application.db.username=$APPLICAION_DB_USERNAME" >> env.properties
-          echo "application.db.password=$APPLICAION_DB_PASSWORD" >> env.properties
+          echo "APPLICAION_DB_URL=$APPLICAION_DB_URL" >> env.properties
+          echo "APPLICAION_DB_USERNAME=$APPLICAION_DB_USERNAME" >> env.properties
+          echo "APPLICAION_DB_PASSWORD=$APPLICAION_DB_PASSWORD" >> env.properties
         env:
           APPLICAION_DB_URL: ${{ secrets.APPLICATION_DB_URL }}
           APPLICATION_DB_USERNAME: ${{ secrets.APPLICATION_DB_USERNAME }}
